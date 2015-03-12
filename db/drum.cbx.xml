@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="drum">
+		<CBX_INST_ENTRY INSTANCE_NAME="|drum|Audio_PLL:p1|altpll:altpll_component" CBX_FILE_NAME="Audio_PLL_altpll.v"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|drum|drum_node:d1|m9kblock:d_n_m9k_1|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_aph2.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|drum|drum_node:d1|m9kblock:d_n_m9k_2|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_aph2.tdf"/>
+	</PROJECT>
+</LOG_ROOT>
