@@ -58,72 +58,34 @@
 # .main_pane.objects.interior.cs.body.tree
 # run -all
 # Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[3].node.d_n_m9k_2.altsyncram_component
+# Time: 50000000  Instance: testbench.DUT.d[0].node.d_n_m9k_2.altsyncram_component
 # Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[3].node.d_n_m9k_1.altsyncram_component
+# Time: 50000000  Instance: testbench.DUT.d[0].node.d_n_m9k_1.altsyncram_component
 # Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[2].node.d_n_m9k_2.altsyncram_component
+# Time: 50000000  Instance: testbench.DUT.d[0].node.d_n_m9k_1.altsyncram_component
 # Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[2].node.d_n_m9k_1.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[1].node.d_n_m9k_2.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[1].node.d_n_m9k_1.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[0].node.d_n_m9k_2.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[0].node.d_n_m9k_1.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[0].node.d_n_m9k_1.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[0].node.d_n_m9k_2.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[1].node.d_n_m9k_1.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[1].node.d_n_m9k_2.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[2].node.d_n_m9k_1.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[2].node.d_n_m9k_2.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[3].node.d_n_m9k_1.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[3].node.d_n_m9k_2.altsyncram_component
-# Break in Module testbench at C:/fei/testbench.v line 27
-# Simulation Breakpoint: Break in Module testbench at C:/fei/testbench.v line 27
-# MACRO ./drum_run_msim_rtl_verilog.do PAUSED at line 18
+# Time: 50000000  Instance: testbench.DUT.d[0].node.d_n_m9k_2.altsyncram_component
 restart
 run -all
 # Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[3].node.d_n_m9k_2.altsyncram_component
+# Time: 50000000  Instance: testbench.DUT.d[0].node.d_n_m9k_2.altsyncram_component
 # Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[3].node.d_n_m9k_1.altsyncram_component
+# Time: 50000000  Instance: testbench.DUT.d[0].node.d_n_m9k_1.altsyncram_component
 # Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[2].node.d_n_m9k_2.altsyncram_component
+# Time: 50000000  Instance: testbench.DUT.d[0].node.d_n_m9k_1.altsyncram_component
 # Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[2].node.d_n_m9k_1.altsyncram_component
+# Time: 50000000  Instance: testbench.DUT.d[0].node.d_n_m9k_2.altsyncram_component
+# Break key hit 
+# Break in Module altsyncram at C:/altera/11.0/modelsim_ae/win32aloem/../altera/verilog/src/altera_mf.v line 45239
+restart
+run -all
 # Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[1].node.d_n_m9k_2.altsyncram_component
+# Time: 50000000  Instance: testbench.DUT.d[0].node.d_n_m9k_2.altsyncram_component
 # Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[1].node.d_n_m9k_1.altsyncram_component
+# Time: 50000000  Instance: testbench.DUT.d[0].node.d_n_m9k_1.altsyncram_component
 # Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[0].node.d_n_m9k_2.altsyncram_component
+# Time: 50000000  Instance: testbench.DUT.d[0].node.d_n_m9k_1.altsyncram_component
 # Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[0].node.d_n_m9k_1.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[0].node.d_n_m9k_1.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[0].node.d_n_m9k_2.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[1].node.d_n_m9k_1.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[1].node.d_n_m9k_2.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[2].node.d_n_m9k_1.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[2].node.d_n_m9k_2.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[3].node.d_n_m9k_1.altsyncram_component
-# Warning : Address pointed at port A is out of bound!
-# Time: 50000  Instance: testbench.DUT.d[3].node.d_n_m9k_2.altsyncram_component
-# Break in Module testbench at C:/fei/testbench.v line 27
+# Time: 50000000  Instance: testbench.DUT.d[0].node.d_n_m9k_2.altsyncram_component
+# Break key hit 
+# Break in Module altsyncram at C:/altera/11.0/modelsim_ae/win32aloem/../altera/verilog/src/altera_mf.v line 45958

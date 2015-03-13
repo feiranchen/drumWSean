@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1us/1ns
 
 module testbench();
 	
@@ -23,7 +23,7 @@ module testbench();
 		reset  = 1'b0;
 		#20 
 		reset  = 1'b1;
-		#200000
+		#20000000
 		$stop;
 	end
 	
@@ -46,7 +46,7 @@ module testbench();
 	.KEY({3'b0,reset}),
 
 	//////////// SW //////////
-	.SW(18'b0),
+	.SW({8'd0,5'd4,5'd12}),
 	
 	//////////// Audio //////////
 	.AUD_ADCDAT(),

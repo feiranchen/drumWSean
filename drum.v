@@ -4,7 +4,7 @@
 //=======================================================
 
 module drum#(//parameter max_row = 0,
-				 parameter stripes = 4)(
+				 parameter stripes = 10)(
 
 	//////////// CLOCK //////////
 	input 		          		CLOCK_50,
@@ -40,7 +40,7 @@ wire signed [17:0] audio_outL, audio_outR ;
 
 assign	AUD_ADCLRCK	=	AUD_DACLRCK;
 assign	AUD_XCK		=	AUD_CTRL_CLK;
-/*
+
 Reset_Delay			r0	(.iCLK(CLOCK_50),.oRESET(DLY_RST));
 
 Audio_PLL 			p1	(.areset(~DLY_RST),.inclk0(CLOCK_50),.c0(AUD_CTRL_CLK));
@@ -59,38 +59,45 @@ AUDIO_DAC_ADC 			u4	(	//	Audio Side
 							.oAUD_inL(audio_inL), // audio data from ADC 
 							.oAUD_inR(audio_inR), // audio data from ADC 
 							.iAUD_ADCDAT(AUD_ADCDAT),
-							.iAUD_extL({u_out[17],u_out[14:0]}), // audio data to DAC
+							.iAUD_extL(u_out[17:2]), // audio data to DAC
 							.iAUD_extR(u_out[17:2]), // audio data to DAC
 							//	Control Signals
 				         .iCLK_18_4(AUD_CTRL_CLK),
 							.iRST_N(DLY_RST)
 							);
 
-*/
+
 /*
 defparam 
 			d1.eta = 5'd6,
 			d1.rho = 5'd4,
 			d1.max_row = 0;
 */
+wire [15:0] u_out_out = u_out[17:2];
+
 wire [17:0] liro [stripes:0];//index of right node
 wire [17:0] rilo [stripes:0];//index of right node
+wire [17:0] out [stripes - 1:0];//index of right node
 assign liro[0] = 18'd0;
 assign rilo[stripes] = 18'd0;
-assign u_out = rilo[(stripes>>1)];
+assign u_out = out[(stripes>>1)];
 genvar i;
 generate
 	for (i=0; i<stripes; i=i+1)
 	begin: d
 	   defparam node.stripe = i;
-	   defparam node.stripes = 4;
+	   defparam node.stripes = stripes;
 		drum_node node(
-				.clock(CLOCK_50),
+				.clock(AUD_DACLRCK),
+				//.clock(CLOCK_50),
 				.reset(KEY[0]),
 				.left_in(liro[i]),
 				.right_in(rilo[i+1]),
 				.left_out(rilo[i]),
-				.right_out(liro[i+1]));
+				.right_out(liro[i+1]),
+				.out(out[i]),
+				.eta(SW[4:0]),
+				.rho(SW[9:5]));
 	end
 endgenerate
 endmodule
@@ -102,7 +109,11 @@ module drum_node(
 						input signed [17:0] left_in,
 						input signed [17:0] right_in,
 						output reg signed [17:0] left_out,
-						output reg signed [17:0] right_out
+						output reg signed [17:0] right_out,
+						output reg signed [17:0] out,
+						
+						input signed [4:0] eta,
+						input signed [4:0] rho
 						);
 						
 reg signed [6:0] addr_1a;
@@ -149,19 +160,21 @@ m9kblock d_n_m9k_2(
 
 	//eta = .0002
 	//rho = .05
-wire signed [4:0] eta; //log2(1/eta)
-wire signed [4:0] rho; //log2(1/rho)
-wire [2:0] max_row;
+//wire signed [4:0] eta; //log2(1/eta)
+//wire signed [4:0] rho; //log2(1/rho)
+wire [4:0] max_row;
 reg [4:0] state;
 
-assign eta = 5'd12;
-assign rho = 5'd4;
-assign max_row = 3'd0;
+//assign eta = 5'd12;
+//assign rho = 5'd4;
+assign max_row = 5'd9;
 parameter stripe = 0;
 parameter stripes = 0;
 wire signed [2:0] stripe_shift;
+wire signed [2:0] row_shift;
 
 assign stripe_shift = (stripe <= (stripes >>> 1)) ? (stripes >>>1) - stripe :  stripe - (stripes >>>1);
+assign row_shift = ((addr_1a + 1) <= (max_row >> 1)) ? (max_row >> 1) - (addr_1a + 1) : (addr_1a + 1) - (max_row >> 1);
 /*
 if (stripe <= (stripes >>>1))
 begin
@@ -171,15 +184,14 @@ begin
 	assign stripe_shift = stripe - (stripes >>>1);
 end
 */
-parameter step1=4'd1, step2=4'd2, step3=4'd3, reset1=4'd5, reset2=4'd6, reset3=4'd7,
-				init1=4'd8, init2=4'd9, init3=4'd10;
+parameter step1=4'd1, step2=4'd2, step3=4'd3, step4=4'd4, reset1=4'd5, reset2=4'd6, reset3=4'd7,
+				init1=4'd8, init2=4'd9, init3=4'd10, init4=4'd11;
 
 //reg signed [17:0] u_1;  // u_{i-1, j  }
 //reg signed [17:0] u_2;  // u_{i+1, j  }
 reg signed [17:0] u_3;  // u_{i  , j-1}
 reg signed [17:0] u_4;  // u_{i  , j+1}
 reg signed [17:0] u;    // u_{i  , j  }
-reg signed [17:0] temp_2a;
 
 reg signed [50:0] test1; // doesn't overflow
 reg signed [50:0] test2;
@@ -187,6 +199,7 @@ reg signed [50:0] test3;
 reg signed [50:0] test4;
 
 reg signed [17:0] u_old;
+reg signed [17:0] out_display [3:0];
 
 always @(posedge clock)
 begin
@@ -199,6 +212,7 @@ begin
 		case(state)
 			reset1:
 			begin
+				out <= 18'd0;
 				// writing u and u_old to the m4k blocks at reset
 				we_1a<=1'b0;
 				we_1b<=1'b0;
@@ -223,16 +237,16 @@ begin
 				addr_2a <= addr_2a + 1;
 				addr_2b <= addr_2b - 1;
 
-				if ((addr_1a + 1) <= (max_row >>> 1))
+				if ((addr_1a + 1) <= (max_row >> 1))
 				begin
-				  wr_data_1a <= (((18'h0ffff << (addr_1a + 1)) >> stripe_shift) >> (max_row >>1));
-				  wr_data_1b <= (((18'h0ffff << (addr_1a + 1)) >> stripe_shift) >> (max_row >>1));
+				  wr_data_1a <= (18'h1fff >> row_shift) >> stripe_shift;
+				  wr_data_1b <= (18'h1fff >> row_shift) >> stripe_shift;
 				  //wr_data_1a <= (((18'h0ffff >> (max_row >> 1)) >> stripe_shift) << (addr_1a + 1)) ;
 				  //wr_data_1b <= (((18'h0ffff >> (max_row >> 1)) >> stripe_shift) << (addr_1a + 1));
 				end else
 				begin
-				  wr_data_1a <= (((18'h0ffff >> (addr_1a + 1)) >> stripe_shift) << (max_row >>1));
-				  wr_data_1b <= (((18'h0ffff >> (addr_1a + 1)) >> stripe_shift) << (max_row >>1));
+				  wr_data_1a <= (18'h1fff >> row_shift) >> stripe_shift;
+				  wr_data_1b <= (18'h1fff >> row_shift) >> stripe_shift;
 				end
 				
 				wr_data_2a <= 0;
@@ -262,6 +276,10 @@ begin
 			begin
 				u_3<=0;
 				//initialize read of u, u_4 and u_old
+				we_1a<=1'b0;
+				we_1b<=1'b0;
+				we_2a<=1'b0;
+				we_2b<=1'b0;
 				addr_1a <= 0;
 				addr_1b <= 1;
 				addr_2a <= 0;
@@ -277,13 +295,18 @@ begin
 			
 			init3:
 			begin
+				//wait for read to complete
+				state<=init4;
+			end
+			
+			init4:
+			begin
 				we_1a<=1'b0;
 				we_1b<=1'b0;
 				we_2a<=1'b0;
 				we_2b<=1'b0;
 				//get u at the beginning of the stripe
 				u <= rd_data_1a;
-				temp_2a<=rd_data_2a;
 				state<=step1;
 			end
 			
@@ -293,9 +316,9 @@ begin
 				//u_1 <= left_in;
 				//u_2 <= right_in;
 				
-				if (addr_1a < max_row)
+				if (addr_1a <= max_row)
 				begin
-					addr_1a <= addr_1a+1;
+					addr_1a <= addr_1a;
 					u_4 <= rd_data_1b;
 				end
 				else
@@ -327,8 +350,8 @@ begin
 				
 				if (addr_1a < max_row)
 				begin
-					addr_1b <= addr_1b+1; 
-					addr_2a <= addr_2a+1;
+					addr_1b <= addr_1b + 1; 
+					addr_2a <= addr_2a + 1;
 					u_3 <= u;
 				end
 				else
@@ -350,7 +373,7 @@ begin
 				//u = y - (y >>> (eta + 1)) + (u <<< 1) - (u >>> eta) - u_old + (u_old >>> eta);
 				u <= ((left_in + right_in + u_3 + u_4 - (u<<<2)) >>> rho) 
 				  - (((left_in + right_in + u_3 + u_4 - (u<<<2)) >>> rho) >>> (eta + 1)) 
-				  + (u <<< 1) - (u >>> eta) - u_old + (u_old >>> eta);
+				  + u - u_old + u - (u >>> eta)  + (u_old >>> eta);
 				 
 				 test1 <= ((left_in + right_in + u_3 + u_4 - (u<<<2)) >>> rho);
 				 test2 <= (((left_in + right_in + u_3 + u_4 - (u<<<2)) >>> rho) >>> (eta + 1)) ;
@@ -365,21 +388,35 @@ begin
 				// u_4 NOT updated
 				// u_old :NOT updated NOT written thru
 			end
-			
+
 			step3:
 			begin
 				we_1a <= 1'b1;
 				wr_data_1a <= u;
 				
+				if (addr_1a == (max_row>>>1))
+				begin
+					out <= u;
+				end
+				
+				out_display[addr_1a] <= u;
+				
 				if (addr_1a < max_row)
 				begin
 					u<=u_4;
-					state <= step1;
+					state <= step4;
 				end else
 				begin
 					u <= u; //stub
 					state <= init1;
 				end
+			end
+			
+			
+			step4:
+			begin
+			  addr_1a <= addr_1a + 1;
+			  state <= step1;
 			end
 		endcase
 	end
