@@ -1,5 +1,5 @@
 EDA Netlist Writer report for drum
-Fri Mar 13 07:56:48 2015
+Fri Mar 13 10:47:25 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Fri Mar 13 07:56:48 2015 ;
+; EDA Netlist Writer Status ; Successful - Fri Mar 13 10:47:25 2015 ;
 ; Revision Name             ; drum                                  ;
 ; Top-level Entity Name     ; drum                                  ;
 ; Family                    ; Cyclone IV E                          ;
@@ -66,20 +66,20 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------------------+---------------------------+
 
 
-+----------------------------------------------------------+
-; Simulation Generated Files                               ;
-+----------------------------------------------------------+
-; Generated Files                                          ;
-+----------------------------------------------------------+
-; C:/fei/simulation/modelsim/drum_7_1200mv_85c_slow.vo     ;
-; C:/fei/simulation/modelsim/drum_7_1200mv_0c_slow.vo      ;
-; C:/fei/simulation/modelsim/drum_min_1200mv_0c_fast.vo    ;
-; C:/fei/simulation/modelsim/drum.vo                       ;
-; C:/fei/simulation/modelsim/drum_7_1200mv_85c_v_slow.sdo  ;
-; C:/fei/simulation/modelsim/drum_7_1200mv_0c_v_slow.sdo   ;
-; C:/fei/simulation/modelsim/drum_min_1200mv_0c_v_fast.sdo ;
-; C:/fei/simulation/modelsim/drum_v.sdo                    ;
-+----------------------------------------------------------+
++----------------------------------------------------------------+
+; Simulation Generated Files                                     ;
++----------------------------------------------------------------+
+; Generated Files                                                ;
++----------------------------------------------------------------+
+; C:/drumWSean/simulation/modelsim/drum_7_1200mv_85c_slow.vo     ;
+; C:/drumWSean/simulation/modelsim/drum_7_1200mv_0c_slow.vo      ;
+; C:/drumWSean/simulation/modelsim/drum_min_1200mv_0c_fast.vo    ;
+; C:/drumWSean/simulation/modelsim/drum.vo                       ;
+; C:/drumWSean/simulation/modelsim/drum_7_1200mv_85c_v_slow.sdo  ;
+; C:/drumWSean/simulation/modelsim/drum_7_1200mv_0c_v_slow.sdo   ;
+; C:/drumWSean/simulation/modelsim/drum_min_1200mv_0c_v_fast.sdo ;
+; C:/drumWSean/simulation/modelsim/drum_v.sdo                    ;
++----------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -88,25 +88,25 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Fri Mar 13 07:56:36 2015
+    Info: Processing started: Fri Mar 13 10:47:04 2015
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off drum -c drum
 Info: Generated simulation netlist will be non-hierarchical because the design has SignalTap II partitions, termination control logic and/or a design partition that contains bidirectional ports
 Warning: An incorrect timescale is selected for the Verilog Output (.VO) file of this PLL design. It's required that the timescale should be 1 ps when simulating a PLL design in a third party EDA tool.
-Info: Generated file drum_7_1200mv_85c_slow.vo in folder "C:/fei/simulation/modelsim/" for EDA simulation tool
+Info: Generated file drum_7_1200mv_85c_slow.vo in folder "C:/drumWSean/simulation/modelsim/" for EDA simulation tool
 Warning: An incorrect timescale is selected for the Verilog Output (.VO) file of this PLL design. It's required that the timescale should be 1 ps when simulating a PLL design in a third party EDA tool.
-Info: Generated file drum_7_1200mv_0c_slow.vo in folder "C:/fei/simulation/modelsim/" for EDA simulation tool
+Info: Generated file drum_7_1200mv_0c_slow.vo in folder "C:/drumWSean/simulation/modelsim/" for EDA simulation tool
 Warning: An incorrect timescale is selected for the Verilog Output (.VO) file of this PLL design. It's required that the timescale should be 1 ps when simulating a PLL design in a third party EDA tool.
-Info: Generated file drum_min_1200mv_0c_fast.vo in folder "C:/fei/simulation/modelsim/" for EDA simulation tool
+Info: Generated file drum_min_1200mv_0c_fast.vo in folder "C:/drumWSean/simulation/modelsim/" for EDA simulation tool
 Warning: An incorrect timescale is selected for the Verilog Output (.VO) file of this PLL design. It's required that the timescale should be 1 ps when simulating a PLL design in a third party EDA tool.
-Info: Generated file drum.vo in folder "C:/fei/simulation/modelsim/" for EDA simulation tool
-Info: Generated file drum_7_1200mv_85c_v_slow.sdo in folder "C:/fei/simulation/modelsim/" for EDA simulation tool
-Info: Generated file drum_7_1200mv_0c_v_slow.sdo in folder "C:/fei/simulation/modelsim/" for EDA simulation tool
-Info: Generated file drum_min_1200mv_0c_v_fast.sdo in folder "C:/fei/simulation/modelsim/" for EDA simulation tool
-Info: Generated file drum_v.sdo in folder "C:/fei/simulation/modelsim/" for EDA simulation tool
+Info: Generated file drum.vo in folder "C:/drumWSean/simulation/modelsim/" for EDA simulation tool
+Info: Generated file drum_7_1200mv_85c_v_slow.sdo in folder "C:/drumWSean/simulation/modelsim/" for EDA simulation tool
+Info: Generated file drum_7_1200mv_0c_v_slow.sdo in folder "C:/drumWSean/simulation/modelsim/" for EDA simulation tool
+Info: Generated file drum_min_1200mv_0c_v_fast.sdo in folder "C:/drumWSean/simulation/modelsim/" for EDA simulation tool
+Info: Generated file drum_v.sdo in folder "C:/drumWSean/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 371 megabytes
-    Info: Processing ended: Fri Mar 13 07:56:48 2015
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:11
+    Info: Peak virtual memory: 425 megabytes
+    Info: Processing ended: Fri Mar 13 10:47:25 2015
+    Info: Elapsed time: 00:00:21
+    Info: Total CPU time (on all processors): 00:00:21
 
 

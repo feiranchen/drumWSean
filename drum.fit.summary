@@ -1,16 +1,16 @@
-Fitter Status : Successful - Fri Mar 13 07:56:21 2015
+Fitter Status : Successful - Fri Mar 13 10:46:38 2015
 Quartus II 64-Bit Version : 11.0 Build 157 04/27/2011 SJ Full Version
 Revision Name : drum
 Top-level Entity Name : drum
 Family : Cyclone IV E
 Device : EP4CE115F29C7
 Timing Models : Final
-Total logic elements : 6,183 / 114,480 ( 5 % )
-    Total combinational functions : 6,153 / 114,480 ( 5 % )
-    Dedicated logic registers : 1,444 / 114,480 ( 1 % )
-Total registers : 1444
+Total logic elements : 12,036 / 114,480 ( 11 % )
+    Total combinational functions : 11,963 / 114,480 ( 10 % )
+    Dedicated logic registers : 2,704 / 114,480 ( 2 % )
+Total registers : 2704
 Total pins : 33 / 529 ( 6 % )
 Total virtual pins : 0
-Total memory bits : 36,000 / 3,981,312 ( 1 % )
+Total memory bits : 72,000 / 3,981,312 ( 2 % )
 Embedded Multiplier 9-bit elements : 0 / 532 ( 0 % )
 Total PLLs : 1 / 4 ( 25 % )

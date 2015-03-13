@@ -4,7 +4,7 @@
 //=======================================================
 
 module drum#(//parameter max_row = 0,
-				 parameter stripes = 10)(
+				 parameter stripes = 20)(
 
 	//////////// CLOCK //////////
 	input 		          		CLOCK_50,
@@ -88,7 +88,7 @@ generate
 	   defparam node.stripe = i;
 	   defparam node.stripes = stripes;
 		drum_node node(
-				.clock(AUD_DACLRCK),
+				.clock(AUD_CTRL_CLK),
 				//.clock(CLOCK_50),
 				.reset(KEY[0]),
 				.left_in(liro[i]),
@@ -162,12 +162,12 @@ m9kblock d_n_m9k_2(
 	//rho = .05
 //wire signed [4:0] eta; //log2(1/eta)
 //wire signed [4:0] rho; //log2(1/rho)
-wire [4:0] max_row;
+wire [10:0] max_row;
 reg [4:0] state;
 
 //assign eta = 5'd12;
 //assign rho = 5'd4;
-assign max_row = 5'd9;
+assign max_row = 11'd40;
 parameter stripe = 0;
 parameter stripes = 0;
 wire signed [2:0] stripe_shift;

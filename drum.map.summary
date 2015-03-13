@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Fri Mar 13 07:55:45 2015
+Analysis & Synthesis Status : Successful - Fri Mar 13 10:45:21 2015
 Quartus II 64-Bit Version : 11.0 Build 157 04/27/2011 SJ Full Version
 Revision Name : drum
 Top-level Entity Name : drum
 Family : Cyclone IV E
-Total logic elements : 6,542
-    Total combinational functions : 6,153
-    Dedicated logic registers : 1,444
-Total registers : 1444
+Total logic elements : 12,712
+    Total combinational functions : 11,963
+    Dedicated logic registers : 2,704
+Total registers : 2704
 Total pins : 33
 Total virtual pins : 0
-Total memory bits : 36,000
+Total memory bits : 72,000
 Embedded Multiplier 9-bit elements : 0
 Total PLLs : 1
