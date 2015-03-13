@@ -2,14 +2,13 @@
 
 module testbench();
 	
-	reg clk_50, clk_25, reset, play;
+	reg clk_50, reset;
 	
 	reg [31:0] index;
 	
 	//Initialize clocks and index
 	initial begin
 		clk_50 = 1'b0;
-		clk_25 = 1'b0;
 		index  = 32'd0;
 	end
 	
@@ -19,21 +18,13 @@ module testbench();
 		clk_50  = !clk_50;
 	end
 	
-	always begin
-		#20
-		clk_25  = !clk_25;
-	end
-	
 	//Intialize and drive signals
 	initial begin
 		reset  = 1'b0;
-		#500 
+		#20 
 		reset  = 1'b1;
-		#20
-		reset  = 1'b0;
-		play   = 1'b1;
-		#10
-		play   = 1'b0;
+		#20000
+		$stop;
 	end
 	
 	//Increment index
@@ -42,14 +33,32 @@ module testbench();
 	end
 
 	//Instantiation of Device Under Test
-	wire [15:0]  testbench_out;
-	example1 DUT(
-		.clk			(clk_50),
-		.clk2			(clk_25),
-		.reset		(reset),
-		.play_me		(play),
-		
-		.out			(testbench_out)
-	);
+	wire [17:0]  testbench_out;
+	
+	drum DUT(
+
+	//////////// CLOCK //////////
+	.CLOCK_50(clk_50),
+	.CLOCK2_50(1'b0),
+	.CLOCK3_50(1'b0),
+
+	//////////// KEY //////////
+	.KEY({3'b0,reset}),
+
+	//////////// SW //////////
+	.SW(18'b0),
+	
+	//////////// Audio //////////
+	.AUD_ADCDAT(),
+	.AUD_ADCLRCK(),
+	.AUD_BCLK(),
+	.AUD_DACDAT(),
+	.AUD_DACLRCK(),
+	.AUD_XCK(),
+
+	//////////// I2C for Audio  //////////
+	.I2C_SCLK(),
+	.I2C_SDAT()
+);
 	
 endmodule

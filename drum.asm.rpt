@@ -1,5 +1,5 @@
 Assembler report for drum
-Thu Mar 12 01:49:20 2015
+Thu Mar 12 21:57:14 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -10,7 +10,7 @@ Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/ECE5760Projects/drum/drum.sof
+  5. Assembler Device Options: C:/fei/drum.sof
   6. Assembler Messages
 
 
@@ -37,7 +37,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Thu Mar 12 01:49:20 2015 ;
+; Assembler Status      ; Successful - Thu Mar 12 21:57:14 2015 ;
 ; Revision Name         ; drum                                  ;
 ; Top-level Entity Name ; drum                                  ;
 ; Family                ; Cyclone IV E                          ;
@@ -77,24 +77,24 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+----------+---------------+
 
 
-+----------------------------------+
-; Assembler Generated Files        ;
-+----------------------------------+
-; File Name                        ;
-+----------------------------------+
-; C:/ECE5760Projects/drum/drum.sof ;
-+----------------------------------+
++---------------------------+
+; Assembler Generated Files ;
++---------------------------+
+; File Name                 ;
++---------------------------+
+; C:/fei/drum.sof           ;
++---------------------------+
 
 
-+------------------------------------------------------------+
-; Assembler Device Options: C:/ECE5760Projects/drum/drum.sof ;
-+----------------+-------------------------------------------+
-; Option         ; Setting                                   ;
-+----------------+-------------------------------------------+
-; Device         ; EP4CE115F29C7                             ;
-; JTAG usercode  ; 0xFFFFFFFF                                ;
-; Checksum       ; 0x005993EB                                ;
-+----------------+-------------------------------------------+
++-------------------------------------------+
+; Assembler Device Options: C:/fei/drum.sof ;
++----------------+--------------------------+
+; Option         ; Setting                  ;
++----------------+--------------------------+
+; Device         ; EP4CE115F29C7            ;
+; JTAG usercode  ; 0xFFFFFFFF               ;
+; Checksum       ; 0x00562844               ;
++----------------+--------------------------+
 
 
 +--------------------+
@@ -103,13 +103,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Thu Mar 12 01:49:12 2015
+    Info: Processing started: Thu Mar 12 21:57:06 2015
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off drum -c drum
 Info: Writing out detailed assembly data for power analysis
 Info: Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 580 megabytes
-    Info: Processing ended: Thu Mar 12 01:49:20 2015
+    Info: Peak virtual memory: 575 megabytes
+    Info: Processing ended: Thu Mar 12 21:57:14 2015
     Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:07
 

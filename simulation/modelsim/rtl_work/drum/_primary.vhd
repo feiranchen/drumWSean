@@ -1,6 +1,9 @@
 library verilog;
 use verilog.vl_types.all;
 entity drum is
+    generic(
+        stripes         : integer := 4
+    );
     port(
         CLOCK_50        : in     vl_logic;
         CLOCK2_50       : in     vl_logic;

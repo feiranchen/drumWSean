@@ -23,7 +23,7 @@ module testbench();
 		reset  = 1'b0;
 		#20 
 		reset  = 1'b1;
-		#20000
+		#200000
 		$stop;
 	end
 	
